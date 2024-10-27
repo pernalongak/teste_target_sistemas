@@ -1,14 +1,28 @@
 <?php
-function fibonacci($n) {
-    $fib = [0, 1];
+function verificaFibonacci($numero) {
+    $a = 0;
+    $b = 1;
 
-    for ($indice = 2; $indice <= $n; $indice++) {
-        $proximo = $fib[$indice - 1] + $fib[$indice - 2];
-        $fib[] = $proximo;
+    if ($numero === 0) {
+        return true;
     }
 
-    return $fib;
+    while ($b <= $numero) {
+        if ($b === $numero) {
+            return true;
+        }
+        $temp = $a;
+        $a = $b;
+        $b = $temp + $b;
+    }
+
+    return false;
 }
 
-print_r(fibonacci(10));
+$numero_informado = 8;
 
+if (verificaFibonacci($numero_informado)) {
+    echo "$numero_informado pertence à sequência de Fibonacci.\n";
+} else {
+    echo "$numero_informado não pertence à sequência de Fibonacci.\n";
+}
